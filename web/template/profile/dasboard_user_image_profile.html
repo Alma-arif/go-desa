@@ -1,0 +1,117 @@
+{{template "partials/header_dasboard" .}}
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">File Upload with Preview</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Your content goes here -->
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!-- <img class="profile-user-img img-fluid img-circle"
+                                src="/dist/img/user4-128x128.jpg" alt="User profile picture"> -->
+                                <img class="profile-user-img img-fluid img-circle" loading="lazy"  src="" id="preview" >
+                        </div>
+                        <form id="uploadForm" enctype="multipart/form-data" method="post" action="/dasboard/admin/profile/image">
+                            <div class="form-group">
+                                <label for="fileInput">Choose File</label>
+                                <input type="file" id="fileInput" name="file" class="form-control" accept="image/*" onchange="previewFile()" style="border: none">
+                            </div>
+
+                            <!-- <div class="preview-container mb-2">
+                                <img src="" id="preview" alt="Preview">
+                            </div> -->
+
+                            <input type="hidden" name="id" value="{{.data.ID}}">
+
+                            <button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            
+                                <img class="profile-user-img img-fluid img-circle" src="" id="preview" alt="Preview" alt="User profile picture">
+                        </div>
+                        
+                    </div>
+                </div> -->
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+<script>
+    function previewFile() {
+        var preview = document.getElementById('preview');
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+
+    function uploadFile() {
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            // Kirim formData ke server menggunakan AJAX atau sesuai dengan metode yang Anda pilih
+            // Misalnya, jika menggunakan Fetch API:
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('File uploaded successfully!');
+                // Tambahkan logika lain sesuai kebutuhan
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+        } else {
+            alert('Please select a file first.');
+        }
+    }
+</script>
+
+
+
+{{template "partials/footer_dasboard" .}}

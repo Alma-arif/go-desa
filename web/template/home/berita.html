@@ -1,0 +1,95 @@
+{{template "partials/header_web_satu" .}}
+
+    <div class="main mb-xlg">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li class="active">Berita</li>
+            </ul>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="text-primary"> <strong>Berita</strong> </h3>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            {{if not .data.main }}
+
+                                <div class="col-md-12">
+                                    <div class="alert alert-info">
+                                        <p><i class="fa fa-warning"></i> Saat ini kami tidak memiliki data "Berita" untuk
+                                            ditampilkan.</p>
+                                    </div>
+                                </div>
+
+                            {{else}}
+                                {{range .data.main }}
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 -thumbnail">
+                                            <div class="bordered"
+                                                style="width:100%; height:20vh; background: url(/image/berita/{{.Image}}) center center no-repeat; background-size:100%;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8">
+                                            <h5 class="m-none"> <a href="/berita/{{.Header}}-{{.ID}}">{{.Judul}}</a> </h5>
+                                            <ul class="list-inline text-info text-sm">
+                                                <li><i class="fa fa-calendar"></i> {{.CreatedAt}}</li>
+                                                <li><i class="fa fa-user"></i> {{.UserName}}</li>
+                                            </ul>
+                                            <p class="text-justify"> Kamis, 24/11/2022, {{.Berita}} :&nbsp; &hellip; <a
+                                                    href="/berita/{{.Header}}-{{.ID}}" class="btn btn-xs btn-primary">selengkapnya
+                                                    <i class="fa fa-arrow-right"></i></a> </p>
+                                        </div>
+                                    </div> <br />
+                                {{end }}
+
+                            {{end}}
+
+                        </div>
+                    </div>
+
+                    {{if .data.main }}
+
+                        {{template "partials/paginationWeb" .}}
+
+                    {{end}}
+
+                    <script type="text/javascript"> $(document).ready(function () { }); </script>
+                    <div class="sharethis-inline-share-buttons"></div>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <aside class="sidebar">
+                       
+                    </aside>
+                    <aside class="sidebar">
+                        <div class="tabs tabs-dark mb-xlg">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item active"> <a class="nav-link font-weight-bold text-uppercase active"
+                                        href="#terakhir" data-toggle="tab">Berita Terakhir</a> </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="terakhir">
+                                    <ul class="simple-post-list">
+
+                                        {{range .data.beritaNew}}
+                                            <li>
+                                                <div class="post-image">
+                                                    <div class="img-thumbnail p-none"> <a href="/berita/{{.Header}}-{{.ID}}">
+                                                            <img src="/image/berita/{{.Image}}" width="50" height="50" /> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="post-info"> <a href="/berita/{{.Header}}-{{.ID}}">{{.Judul}}</a>
+                                                    <div class="post-meta"> <i class="fa fa-calendar"></i> {{.CreatedAt}}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {{end}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{template "partials/footer_web_satu" .}}

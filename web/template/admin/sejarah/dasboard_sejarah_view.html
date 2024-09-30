@@ -1,0 +1,210 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sejarah</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item active">Sejarah</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-12">
+                        <!-- /.card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Sejarah</h3>
+                            </div>
+                            <div class="card-header">
+                                {{if eq .data.sejarah.ID 0}}
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                                    <i class="fas fa-plus-circle"></i>New</button>
+                                {{else}}
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modal-lg">
+                                    <i class="fas fa-plus-circle"></i>Update</button>
+                                {{end}}
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                {{if eq .data.sejarah.ID 0}}
+
+                {{else}}
+                    {{if eq .data.sejarah.Image ""}}
+
+                    {{else}}
+                    
+                            <div class="col-12">
+                                <div class="card card-outline card-info">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Image</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{if eq .data.sejarah.Image ""}}
+                                            {{else}}
+                                                <div class="col-sm-2">
+                                                    <a href="/image/berita/{{.data.sejarah.Image}}?text=1" data-toggle="lightbox"
+                                                    data-title="sample " data-gallery="gallery">
+                                                    <img src="/image/berita/{{.data.sejarah.Image}}?1" class="img-fluid mb-2"
+                                                        alt="white sample">
+                                                    </a>
+                                                    <td class="project-actions">
+                
+                                                    <a class="btn btn-danger btn-sm" href="/dasboard/admin/sejarah/image/delete/{{.data.sejarah.ID}}"><i
+                                                        class="fas fa-trash"></i> Delete</a>
+                                                    </td>
+                                                </div>
+                                            {{end}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}}
+
+                    <div class="col-md-12">
+                        <div class="card card-outline card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Sejarah
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        {{.data.sejarah.Sejarah}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+
+                            </div>
+                        </div>
+                    </div>
+
+                {{end}}
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <!-- /.modal -->
+        {{if eq .data.sejarah.ID 0}}
+                <div class="modal fade" id="modal-lg">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Sejarah Baru</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/dasboard/admin/sejarah/new" method="post" enctype="multipart/form-data">
+                                    <div class="card-body">
+
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" name="image" class="custom-file-input" id="image">
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <textarea id="summernote" name="sejarah">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+        {{else}}
+                <div class="modal fade" id="modal-lg">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Sejarah Update</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/dasboard/admin/sejarah/update" method="post" enctype="multipart/form-data">
+                                    <div class="card-body">
+
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" name="image" class="custom-file-input" id="image">
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <textarea id="summernote" name="sejarah">
+                                                {{.data.sejarah.Sejarah}}
+                                            </textarea>
+                                        </div>
+                                        <input type="hidden" name="id" value="{{.data.sejarah.ID}}">
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+        {{end}}
+        <!-- /.modal -->
+
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

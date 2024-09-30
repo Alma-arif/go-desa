@@ -1,0 +1,80 @@
+{{template "partials/header_web_satu" .}}
+
+
+<div class="main mb-xlg">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home"></i></a></li>
+            <li><a href="/pengumuman">Pengumuman</a></li>
+            <li class="active">{{.data.main.Judul}}</li>
+        </ul>
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="text-primary"> <strong>{{.data.main.Judul}}</strong>
+                </h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline text-info text-sm">
+                            <li><i class="fa fa-calendar"> </i> {{.data.main.CreatedAt}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="myCarousel" class="owl-carousel" data-plugin-options="{'nav':true, 'items':1}">
+                           
+                            <div class="item active"> <img
+                                    src="/image/berita/{{.data.main.Image}}"
+                                    class="img-responsive"> </div>
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            {{.data.main.Pengumuman}}
+
+                        </p>
+                    </div>
+                </div>
+                <div class="sharethis-inline-share-buttons"></div>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <aside class="sidebar">
+                  
+                </aside>
+                <aside class="sidebar">
+                    <div class="tabs tabs-dark mb-xlg">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active"> <a class="nav-link font-weight-bold text-uppercase active"
+                                    href="#terakhir" data-toggle="tab">Berita Terakhir</a> </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="terakhir">
+                                <ul class="simple-post-list">
+                                    {{range .data.beritaNew}}
+                                    <li>
+                                        <div class="post-image">
+                                            <div class="img-thumbnail p-none"> <a href="/berita/{{.Header}}-{{.ID}}">
+                                                    <img src="/image/berita/{{.Image}}" width="50" height="50" /> </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-info"> <a href="/berita/{{.Header}}-{{.ID}}">{{.Judul}}</a>
+                                            <div class="post-meta"> <i class="fa fa-calendar"></i> {{.CreatedAt}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {{end}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "partials/footer_web_satu" .}}

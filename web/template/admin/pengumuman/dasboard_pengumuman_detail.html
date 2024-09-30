@@ -1,0 +1,178 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- conten  -->
+<div class="content-wrapper" style="min-height: 1604.44px;">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Pengumuman</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+            <li class="breadcrumb-item"><a href="/dasboard/admin/pengumuman">Pengumuman</a></li>
+            <li class="breadcrumb-item active">Detail</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="invoice p-3 mb-3">
+            <div class="row">
+              <div class="col-12">
+                <h4>
+                  <i class="fas fa-globe"></i> Pengumuman Detail
+                </h4>
+              </div>
+            </div>
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                <address>
+                  <strong>Judul : {{.data.pengumuman.Judul}}</strong>
+                  <br>
+                  Uploader : {{.data.pengumuman.Username}}
+                  <br>
+                  Status :
+                  {{if eq .data.pengumuman.Status 1}}
+                  <td class="project-actions"><a class="btn btn-block btn-success btn-sm">Di Publish</a>
+                  </td> {{else}}
+                  <td class="project-actions"><a class="btn btn-block btn-danger btn-sm">Di Sembunyikan</a>
+                  </td>
+                  {{end}}
+                  <br>
+                  Tanggal Di Upload : {{.data.pengumuman.CreatedAt.Format "02-01-2006 15:04:05" }}
+                </address>
+              </div>
+            </div>
+            <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
+              Upload Gamabar
+            </button> -->
+            <br>
+            <br>
+
+            <div class="row">
+              <div class="col-6">
+              </div>
+            </div>
+            <div class="row no-print">
+              <div class="col-12">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h4 class="card-title">Image</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                {{if eq .data.pengumuman.Image ""}}
+                {{else}}
+                <div class="col-sm-2">
+                  <a href="/image/berita/{{.data.pengumuman.Image}}?text={{.data.pengumuman.ID}}" data-toggle="lightbox"
+                    data-title="Image - Utama" data-gallery="gallery">
+                    <img src="/image/berita/{{.data.pengumuman.Image}}?{{.data.pengumuman.ID}}" class="img-fluid mb-2"
+                      alt="white sample">
+                  </a>
+
+                </div>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                pengumuman
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <textarea id="summernote">
+                {{.data.pengumuman.Pengumuman}}
+                </textarea>
+            </div>
+            <div class="card-footer">
+
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+
+      </div>
+    </div>
+    <!-- /.modal -->
+
+
+
+
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Image Baru</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/dasboard/admin/berita/image/new" method="post" enctype="multipart/form-data">
+              <div class="card-body">
+
+                <div class="form-group">
+                  <label for="kategori">Image Utama</label>
+                  <select class="form-control select2" style="width: 100%;" id="kategori" name="image_utama">
+                    <option selected="selected" value="">tidak</option>
+                    <option value="1">Utama</option>
+                  </select>
+                  <input type="hidden" name="id_berita" value="{{.data.pengumuman.ID}}">
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="image_berita" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                            <span class="input-group-text">Upload</span>
+                        </div> -->
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+  </section>
+
+</div>
+<!-- content end  -->
+
+
+{{template "partials/footer_dasboard" .}}

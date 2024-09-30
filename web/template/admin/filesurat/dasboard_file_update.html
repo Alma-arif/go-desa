@@ -1,0 +1,59 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/surat/">Surat</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/surat/Setting">Pengaturan</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Update Pengaturan Surat</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/admin/surat/setting/update" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nama">Nama </label>
+                            <input type="text" name="nama" value="{{.data.file.Nama}}"
+                                class="form-control" id="nama" placeholder="Nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="kode-suart">Kode Surat </label>
+                            <input type="text" name="kode-surat" value="{{.data.file.KodeSurat}}"
+                                class="form-control" id="kode-suart" placeholder="Kode Surat">
+                        </div>
+                        <input type="hidden" name="id" value="{{.data.file.ID}}">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

@@ -1,0 +1,261 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Suart Keterangan Nikah N1</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/surat">Surat</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Update</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/admin/surat/surat-pengatar-nikah/update" method="post">
+                        
+                        <input type="hidden" name="id" value="{{.data.Suartfull.ID}}">
+                        <input type="hidden" name="kode_surat" value="{{.data.Suartfull.KodeSurat}}">
+                        <input type="hidden" name="no_surat" value="{{.data.nosurat}}">
+
+                        <h5>Data Diri Pemohon</h5>
+                        <div class="form-group">
+                            <label for="nama_pemohon">Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{.data.surat.NamaPemohon}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nik_pemohon">Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="nik_pemohon" name="nik_pemohon" value="{{.data.surat.NikPemohon}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="jenis_kelamin_pemohon">Jenis Kelamin*</label>
+                            <select class="form-control" id="jenis_kelamin_pemohon" name="jenis_kelamin_pemohon" required>
+                                <option value="{{.data.surat.JenisKelaminPemohon}}">{{.data.surat.JenisKelaminPemohon}}</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tempat_lahir_pemohon">Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" id="tempat_lahir_pemohon" name="tempat_lahir_pemohon" value="{{.data.surat.TempatLahirPemohon}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir_pemohon" class="form-control datetimepicker-input"
+                                            data-target="#reservationdate" value="{{.data.surat.TanggalLahirPemohon}}" placeholder="Bulan/Tanggal/Tahun">
+                                        <div class="input-group-append" data-target="#reservationdate"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kewarganegaraan_pemohon">Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="kewarganegaraan_pemohon" name="kewarganegaraan_pemohon" value="{{.data.surat.KewarganegaraanPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama_pemohon">Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="agama_pemohon" name="agama_pemohon" value="{{.data.surat.AgamaPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pekerjaan_pemohon">Pekerjaan :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pekerjaan_pemohon" name="pekerjaan_pemohon" value="{{.data.surat.PekerjaanPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_pemohon">Alamat :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="alamat_pemohon" name="alamat_pemohon" value="{{.data.surat.AlamatPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status_nikah">Status Pernikahan :</label>
+                            <select class="form-control" id="status_nikah" name="status_pernikahan_pemohon" required>
+                                <option value="{{.data.surat.StatusPernikahanPemohon}}">{{.data.surat.StatusPernikahanPemohon}}</option>
+                                <option value="Sudah Menikah">Sudah Menikah</option>
+                                <option value="Belum Menikah">Belum Menikah</option>
+                            </select>
+                        </div>
+
+
+                        <h5>Data Diri Ayah</h5>
+                        <div class="form-group">
+                            <label for="nama_ayah">Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nama_ayah" name="nama_ayah" value="{{.data.surat.NamaAyahPemohon}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nik_ayah">Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nik_ayah" name="nik_ayah" value="{{.data.surat.NikAyahPemohon}}">
+                            </div>
+                        </div>
+                       
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tempat_lahir_ayah">Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" id="tempat_lahir_ayah" name="tempat_lahir_ayah" value="{{.data.surat.TempatLahirAyahPemohon}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                    <div class="input-group date" id="reservationdatedua" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir_ayah" class="form-control datetimepicker-input"
+                                            data-target="#reservationdatedua" value="{{.data.surat.TanggalLahirAyahPemohon}}" placeholder="Bulan/Tanggal/Tahun">
+                                        <div class="input-group-append" data-target="#reservationdatedua"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kewarganegaraan_ayah">Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="kewarganegaraan_ayah" name="kewarganegaraan_ayah" value="{{.data.surat.KewarganegaraanAyahPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama_ayah">Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="agama_ayah" name="agama_ayah" value="{{.data.surat.AgamaAyahPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pekerjaan_ayah">Pekerjaan :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" value="{{.data.surat.PekerjaanAyahPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_ayah">Alamat :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="alamat_ayah" name="alamat_ayah" value="{{.data.surat.AlamatAyahPemohon}}">
+                            </div>
+                        </div>
+
+                        <h5>Data Diri Ibu </h5>
+                        <div class="form-group">
+                            <label for="nama_ibu">Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nama_ibu" name="nama_ibu" value="{{.data.surat.NamaIbuPemohon}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nik_ibu">Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nik_ibu" name="nik_ibu" value="{{.data.surat.NikIbuPemohon}}">
+                            </div>
+                        </div>
+                  
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tempat_lahir_ibu">Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" id="tempat_lahir_ibu" name="tempat_lahir_ibu" value="{{.data.surat.TempatLahirIbuPemohon}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                    <div class="input-group date" id="reservationdatetiga" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir_ibu" class="form-control datetimepicker-input"
+                                            data-target="#reservationdatetiga" value="{{.data.surat.TanggalLahirIbuPemohon}}" placeholder="Bulan/Tanggal/Tahun">
+                                        <div class="input-group-append" data-target="#reservationdatetiga"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kewarganegaraan_ibu">Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="kewarganegaraan_ibu" name="kewarganegaraan_ibu" value="{{.data.surat.KewarganegaraanIbuPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama_ibu">Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="agama_ibu" name="agama_ibu" value="{{.data.surat.AgamaIbuPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pekerjaan_ibu">Pekerjaan :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" value="{{.data.surat.PekerjaanIbuPemohon}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_ibu">Alamat :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="alamat_ibu" name="alamat_ibu" value="{{.data.surat.AlamatIbuPemohon}}">
+                            </div>
+                        </div>
+                    
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+    </section>
+</div>
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

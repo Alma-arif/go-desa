@@ -1,0 +1,165 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dokumen</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item active">Dokumen</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Daftar Dokumen</h3>
+                        </div>
+                        <div class="card-header">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                                <i class="fas fa-plus-circle"></i>Unggah File Baru</button>
+                            <a href="/dasboard/admin/dokumen/recycle" class="btn btn-danger float-right"> <i
+                                    class="fas fa-trash"></i> Data Sampah</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th>No. </th>
+                                        <th>Nama</th>
+                                        <th>Keterangan</th>
+                                        <th>size (MB)</th>
+                                        <th>Arsip</th>
+                                        <th>Tanggal di Buat</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {{ range .data.file}}
+                                    <tr role="row" class="odd">
+                                        <td>{{.Index }}</td>
+                                        <td>{{.FileName}}</td>
+                                        <td>{{.Deskripsi}}</td>
+                                        <td>{{.FileSize}} MB</td>
+                                        <td>{{.ArsipName}}</td>
+                                        <td>{{.CreatedAt.Format "02-01-2006 15:04:05" }}</td>
+                                        {{if eq .FileStatus 1}}
+                                        <td class="project-actions"><a class="btn btn-block btn-success btn-sm"
+                                                href="/dasboard/admin/dokumen/key/{{.ID}}"><i class="fas fa-lock"></i>Di Kunci</a>
+                                        </td> {{else}}
+                                        <td class="project-actions"><a class="btn btn-block btn-danger btn-sm"
+                                                href="/dasboard/admin/dokumen/key/{{.ID}}"><i
+                                                    class="fas fa-lock-open"></i>Tidak dikunci</a>
+                                        </td>
+                                        {{end}}
+                                        <td class="project-actions text-right">
+                                            <a class="btn btn-primary btn-sm" href="/dasboard/admin/dokumen/detail/{{.ID}}"><i
+                                                    class="fas fa-folder"></i> View</a>
+                                            <a class="btn btn-info btn-sm"
+                                                href="/dasboard/admin/dokumen/update/{{.ID}}"><i
+                                                    class="fas fa-pencil-alt"></i> Edit</a>
+                                            <a class="btn btn-danger btn-sm"
+                                                href="/dasboard/admin/dokumen/delete/{{.ID}}"><i
+                                                    class="fas fa-trash"></i> Delete</a>
+                                        </td>
+                                    </tr>
+                                    {{ end}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <!-- /.modal -->
+
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Unggah File Baru</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/dasboard/admin/dokumen/new" method="post" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="nama-file">Nama </label>
+                                    <input type="text" name="nama" class="form-control" id="nama-file"
+                                        placeholder="nama File">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Keterangan-file">Keterangan </label>
+                                    <input type="text" name="deskripsi_file" class="form-control" id="Keterangan-file"
+                                        placeholder="Ketarangan File">
+                                </div>
+                                <div class="form-group">
+                                    <label>Arsip</label>
+                                    <select class="form-control select2" style="width: 100%;" name="arsip_id">
+                                        <option selected="selected" value="0">-</option>
+                                        {{range .data.arsip}}
+                                        <option value="{{.ID}}">{{.Nama}}</option>
+                                        {{end}}
+                                    </select>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label for="exampleInputFile">File input</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="file-dokumen" class="custom-file-input"
+                                                id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

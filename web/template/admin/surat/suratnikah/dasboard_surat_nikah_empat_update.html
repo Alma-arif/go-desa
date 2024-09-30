@@ -1,0 +1,187 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Suart Persetujuan Calon Pengatin N4</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/surat">Surat</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Update</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/admin/surat/surat-persetujuan-pengatin/update" method="post">
+                        <input type="hidden" name="id" value="{{.data.Suartfull.ID}}">
+                        <input type="hidden" name="kode_surat" value="{{.data.Suartfull.KodeSurat}}">
+                        <input type="hidden" name="no_surat" value="{{.data.nosurat}}">
+
+                        <h5>Data Calon Suami</h5>
+                        <div class="form-group">
+                            <label for="nama_calon_suami">Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nama_calon_suami" name="nama_calon_suami" value="{{.data.surat.NamaCalonSuami}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="binti_calon_suami">Binti* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="binti_calon_suami" name="binti_calon_suami" value="{{.data.surat.BintiCalonSuami}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nik_calon_suami">Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nik_calon_suami" name="nik_calon_suami" value="{{.data.surat.NikCalonSuami}}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tempat_lahir_calon_suami">Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" id="tempat_lahir_calon_suami" name="tempat_lahir_calon_suami" value="{{.data.surat.TempatLahirCalonSuami}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir_calon_suami"
+                                            class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Bulan/Tanggal/Tahun" value="{{.data.surat.TanggalLahirCalonSuami}}">
+                                        <div class="input-group-append" data-target="#reservationdate"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="kewarganegaraan_calon_suami">Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="kewarganegaraan_calon_suami"
+                                    name="kewarganegaraan_calon_suami" value="{{.data.surat.KewarganegaraanCalonSuami}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama_calon_suami">Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="agama_calon_suami" name="agama_calon_suami" value="{{.data.surat.AgamaCalonSuami}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pekerjaan_calon_suami">Pekerjaan :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pekerjaan_calon_suami" name="pekerjaan_calon_suami" value="{{.data.surat.PekerjaanCalonSuami}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_calon_suami">Alamat :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="alamat_calon_suami" name="alamat_calon_suami" value="{{.data.surat.AlamatCalonSuami}}">
+                            </div>
+                        </div>
+
+                        <h5>Data Calon Istri</h5>
+                        <div class="form-group">
+                            <label for="nama_calon_istri">Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nama_calon_istri" name="nama_calon_istri" value="{{.data.surat.NamaCalonIstri}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="binti_calon_istri">Binti* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="binti_calon_istri" name="binti_calon_istri" value="{{.data.surat.BintiCalonIstri}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nik_calon_istri">Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="nik_calon_istri" name="nik_calon_istri" value="{{.data.surat.NikCalonIstri}}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tempat_lahir_calon_istri">Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" id="tempat_lahir_calon_istri" name="tempat_lahir_calon_istri" value="{{.data.surat.TempatLahirCalonIstri}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                    <div class="input-group date" id="reservationdatedua" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir_calon_istri" class="form-control datetimepicker-input" placeholder="Bulan/Tanggal/Tahun" data-target="#reservationdatedua" value="{{.data.surat.TanggalLahirCalonIstri}}">
+                                        <div class="input-group-append" data-target="#reservationdatedua"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kewarganegaraan_calon_istri">Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="kewarganegaraan_calon_istri" name="kewarganegaraan_calon_istri" value="{{.data.surat.KewarganegaraanCalonIstri}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama_calon_istri">Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" id="agama_calon_istri" name="agama_calon_istri" value="{{.data.surat.AgamaCalonIstri}}"> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pekerjaan_calon_istri">Pekerjaan :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pekerjaan_calon_istri" name="pekerjaan_calon_istri" value="{{.data.surat.PekerjaanCalonIstri}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_calon_istri">Alamat :</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="alamat_calon_istri"   name="alamat_calon_istri" value="{{.data.surat.AlamatCalonIstri}}">
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+    </section>
+</div>
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

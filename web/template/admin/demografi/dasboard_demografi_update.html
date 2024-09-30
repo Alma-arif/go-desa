@@ -1,0 +1,73 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/demografi/">Demografi</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Demografi</h3>
+                </div>
+                <div class="card-body">
+
+                    <form action="/dasboard/admin/demografi/update" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            
+                          
+                            <div class="form-group">
+                                <label for="image">File Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image" class="custom-file-input" id="image"  placeholder="{{.data.demografi.Image}}">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <textarea id="summernote" name="demografi">
+                                {{.data.demografi.Demografi}}
+                            </textarea>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" name="id" value="{{.data.demografi.ID}}">
+
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="card-footer">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

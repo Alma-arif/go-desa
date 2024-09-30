@@ -1,0 +1,291 @@
+{{template "partials/header_web_satu" .}}
+
+<div role="main" class="main">
+    <div class="slider-container light rev_slider_wrapper">
+        <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider
+            data-plugin-options="{'delay':9000,'gridwidth':1170,'gridheight':480,'disableProgressBar':''}">
+            <ul>
+                
+
+            {{if eq .data.SlideShow.Utama 1}}
+                <li data-transition="fade"> <img src="/image/{{.SlideShowImages}}" data-bgposition="right center"
+                        data-bgpositionend="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                        data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="110"
+                        data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
+                        data-offsetend="0 0" data-bgparallax="0" class="rev-slidebg">
+                    <div class="tp-caption bottom-label tp-caption-overlay-opacity" data-x="left" data-hoffset="0"
+                        data-y="bottom" data-voffset="20" data-start="500" style="z-index:5; color:#fff;"> <strong> <a
+                                href="{{.Link}}">{{.Judul}}</a></strong><br /> <a href=""></a>{{.Keterangan}} </a></div>
+                </li>
+                {{end}}
+                {{ range .data.SlideShow.ImageNoPrimary}}
+                <li data-transition="fade"> <img src="/image/{{.SlideShowImages}}" data-bgposition="right center"
+                        data-bgpositionend="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                        data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="110"
+                        data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
+                        data-offsetend="0 0" data-bgparallax="0" class="rev-slidebg">
+                    <div class="tp-caption bottom-label tp-caption-overlay-opacity" data-x="left" data-hoffset="0"
+                        data-y="bottom" data-voffset="20" data-start="500" style="z-index:5; color:#fff;"> <strong> <a
+                                href="{{.Link}}">{{.Judul}}</a></strong><br /> <a href=""></a>{{.Keterangan}} </a></div>
+                </li>
+                {{end}}
+                
+            </ul>
+          
+        </div>
+    </div>
+    <!-- <div class="row quote-v1"> <div class="col-md-12 text-center"> <span> Website Resmi Desa Baluk - Kecamatan Negara - Jembrana </span> </div> </div> <br /><br /> -->
+    <!-- Start Shortcuts -->
+    <section class="mb-xlg pt-xlg pb-lg" style="background-color: #f8f9fc;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <form class="p-4 shadow bg-white rounded">
+                        <div class="row text-left">
+                           
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter-box text-center"> 
+                                    <a href=""> 
+                                    <img src="http://www.baluk.desa.id/themes/default/assets/images/illustrator/services.svg"
+                                            height="70" alt="">
+                                        <h6 class="counter-head text-muted">Layanan Masyarakat</h6>
+                                    </a> </div>
+                            </div>
+                            
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter-box text-center"> 
+                                    <a href=""> 
+                                        <img src="http://www.baluk.desa.id/themes/default/assets/images/illustrator/Asset187.svg"
+                                            height="70" alt="">
+                                        <h6 class="counter-head text-muted">Pembangunan Desa</h6>
+                                    </a> 
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter-box text-center"> 
+                                    <a href="">
+                                         <img src="http://www.baluk.desa.id/themes/default/assets/images/illustrator/Asset186.svg"
+                                            height="70" alt="">
+                                        <h6 class="counter-head text-muted">Keuangan Desa</h6>
+                                    </a> 
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter-box text-center"> 
+                                    <a href="">
+                                         <img src="http://www.baluk.desa.id/themes/default/assets/images/illustrator/Asset192.svg"
+                                            height="70" alt="">
+                                        <h6 class="counter-head text-muted">Keuangan Desa</h6>
+                                    </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section> <!-- End Shortcuts -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="heading heading-primary heading-border heading-bottom-border">
+                    <h4 class="heading-primary"> <a href="/berita" data-plugin-tooltip
+                            type="link" data-toggle="tooltip" data-placement="right" title="Lihat lainnya">
+                            Berita <strong>Terkini</strong> <i class="fa fa-caret-right"></i> </a> </h4>
+                </div>
+                {{if not .data.beritaNew }}
+                    <p class="font-trans">Tidak ada data yang ditampilkan</p>
+                {{end}}
+                {{range .data.beritaNew}}
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="bordered"
+                            style="position: relative; width:100%; height:20vh; background: url('/image/berita/{{.Image}}') center center no-repeat; background-size:100%;">
+                            <div class="p-xs bg-primary text-sm"
+                                style="opacity: 0.85; position: absolute; bottom: 0px;">{{.CreatedAt}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <article>
+                            <h5 class="m-none p-none"> <a
+                                    href="/berita/{{.Header}}-{{.ID}}">{{.Judul}}</a> </h5>
+                            <p class="mt-sm"> {{.CreatedAt}}, {{.Berita}}.<a
+                                    href="/berita/{{.Header}}-{{.ID}}"
+                                    class=read-more> Selengkapnya <i class="fa fa-angle-right"></i></a> </p>
+                        </article>
+                    </div>
+                </div>
+                {{end}}
+                
+                
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="heading heading-primary heading-border heading-bottom-border">
+                    <h4 class="heading-primary"> <a href="/pengumuman" data-plugin-tooltip
+                            type="link" data-toggle="tooltip" data-placement="right" title="Lihat lainnya"> Pengumuman
+                            <i class="fa fa-caret-right"></i> </a> </h4>
+                </div>
+                {{if not .data.pengumumanNew }}
+                    <p class="font-trans">Tidak ada data yang ditampilkan</p>
+                {{end}}
+                {{range .data.pengumumanNew}}
+                <div class="panel-group panel-group-sm" id="accordion">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading post">
+                            <h5 class="panel-title"> <a class="accordion-toggle text-light" data-toggle="collapse"
+                                    data-parent="#accordion" href="#info0"> {{.Judul}} </a> </h5>
+                        </div>
+                        <div id="info0" class="accordion-body collapse">
+                            <div class="panel-body"> <i class="fa fa-calendar"></i>{{.CreatedAt}} | 
+                                <i class="fa fa-user"></i>{{.Username}}<br />
+                                <p style="text-align:justify; margin-bottom:10px;">{{.Pengumuman}}</p> <a
+                                    href="/pengumuman/{{.Header}}-{{.ID}}"
+                                    class='btn btn-primary btn-sm'>Selengkapnya <i class='fa fa-caret-right'></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+
+                <div class="heading heading-primary heading-border heading-bottom-border">
+                    <h4 class="heading-primary"> <a href="/agenda" data-plugin-tooltip
+                            type="link" data-toggle="tooltip" data-placement="right" title="Lihat lainnya">
+                            Agenda <strong>Kegiatan</strong> <i class="fa fa-caret-right"></i> </a> </h4>
+                </div>
+                <p class="font-trans">Tidak ada data yang ditampilkan</p>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: rgba(0, 0, 0, .025);" class="mt-lg pt-md pb-md">
+        <div class="container mt-lg">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="heading heading-primary heading-border heading-bottom-border">
+                        <h4 class="heading-primary"> <a href="/gallery" data-plugin-tooltip
+                                type="link" data-toggle="tooltip" data-placement="right" title="Lihat lainnya"> Galeri
+                                <strong>Foto &amp; Video</strong> <i class="fa fa-caret-right"></i> </a> </h4>
+                    </div>
+                    <p class="font-trans">Tidak ada data yang ditampilkan</p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="heading heading-primary heading-border heading-bottom-border">
+                        <h4 class="heading-primary"> <a href="/organisasi" data-plugin-tooltip
+                                type="link" data-toggle="tooltip" data-placement="right" title="Lihat lainnya"> Struktur
+                                <strong>Organisasi</strong> <i class="fa fa-caret-right"></i> </a> </h4>
+                    </div>
+                    <div class="owl-carousel"
+                        data-plugin-options="{'nav':true, 'items':1, 'dots':false, 'autoplay': true}">
+                        <div class="item -thumbnail p-none"> <a
+                                href="/organisasi">
+                                <div
+                                    style="margin: 1px 1px; height:310px;width:auto;background:url('file/PERBEKELkkl.jpeg') center center no-repeat; background-size: 80% auto">
+                                </div>
+                                <div class="p-xs text-center bg-primary text-sm"
+                                    style="opacity:0.75; position:absolute; bottom:0px; left:10%; width:80%;">
+                                    <strong> </strong><br /> <br /> <small></small>
+                                </div>
+                            </a> </div>
+                        <!-- <div class="item -thumbnail p-none"> <a
+                                href="/organisasi/detail?nid=50467">
+                                <div
+                                    style="margin: 1px 1px; height:310px;width:auto;background:url('file/SEKDES.jpg') center center no-repeat; background-size: 80% auto">
+                                </div>
+                                <div class="p-xs text-center bg-primary text-sm"
+                                    style="opacity:0.75; position:absolute; bottom:0px; left:10%; width:80%;">
+                                    <strong>I KETUT SUDIARTA, SE</strong><br /> SEKRETARIS DESA<br />
+                                    <small></small>
+                                </div>
+                            </a> </div> -->
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-intro bg-primary mb-none">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <!-- <p> <strong>DEMI BALUK HARUS BISA</strong> <span></span> </p> -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="get-started text-left text-lg-right"> <a href="/about-us"
+                            class="btn btn-dark btn-lg">Tentang Kami <i class="fa fa-caret-right"></i></a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: rgba(0, 0, 0, .025);">
+        <div class="row -bg-primary">
+            <div class="col-sm-8"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15854.5446691342!2d110.78679538210577!3d-6.567521913490372!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e712142da41b4a9%3A0xc42a84b5ee537684!2sKepuk%2C%20Kec.%20Bangsri%2C%20Kabupaten%20Jepara%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1712977160644!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
+            <div class="col-sm-4 pt-lg -hidden-xs">
+                <div class="container" style="width:100%;">
+                    <div class="table-responsive">
+                        <table class="table -table-striped table-preview">
+                            <tbody>
+                                <tr>
+                                    <th width="40%" nowrap>Kode PUM</th>
+                                    <td width="1px">:</td>
+                                    <!-- <td>5101012002</td> -->
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Tahun Pembentukan</th>
+                                    <td width="1px">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Dasar Hukum</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Tipologi</th>
+                                    <td width="1px">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Klasifikasi</th>
+                                    <td width="1px">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Kategori</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Luas Wilayah</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Batas Sebelah Utara</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Batas Sebelah Selatan</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Batas Sebelah Timur</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap></td>
+                                </tr>
+                                <tr>
+                                    <th width="40%" nowrap>Batas Sebelah Barat</th>
+                                    <td width="1px">:</td>
+                                    <td nowrap> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{template "partials/footer_web_satu" .}}

@@ -1,0 +1,137 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Suart Keterangan Usaha</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/surat/">Surat</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Dokument</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/admin/surat/surat-usaha/update" method="post">
+                        <div class="form-row">
+
+                            <input type="hidden" name="id" value="{{.data.Suartfull.ID}}">
+                            <input type="hidden" name="kode_surat" value="{{.data.Suartfull.KodeSurat}}">
+                            <input type="hidden" name="no_surat" value="{{.data.nosurat}}">
+
+
+                        </div>
+                        <div class="form-group">
+                            <label>Nama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="nama_pemohon" value="{{.data.surat.Nama}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nomor Induk Kependudukan (NIK)* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="nik" value="{{.data.surat.NIK}}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Tempat Lahir* :</label>
+                                    <div class="input-group">
+                                        <input type="text" required class="form-control" name="tempat_lahir" value="{{.data.surat.TempatLahir}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir* :</label>
+                                 
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" required name="tanggal_lahir" class="form-control datetimepicker-input"
+                                            data-target="#reservationdate" value="{{.data.surat.TanggalLahir}}" placeholder="Bulan/Tanggal/Tahun">
+                                        <div class="input-group-append" data-target="#reservationdate"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Kewarganegaraan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="kewarga_negaraan" value="{{.data.surat.KewargaNegaraan}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Agama* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="agama" value="{{.data.surat.Agama}}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="status_nikah">Status Pernikahan* :</label>
+                            <select class="form-control" id="status_nikah" name="status_nikah" required>
+                                <option value="{{.data.surat.StatusPenikahan}}">{{.data.surat.StatusPenikahan}}</option>
+                                <option value="Sudah Menikah">Sudah Menikah</option>
+                                <option value="Belum Menikah">Belum Menikah</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pekerjaan* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="pekerjaan"  value="{{.data.surat.Pekerjaan}}">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label>Alamat* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="alamat"  value="{{.data.surat.Alamat}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>JenisUsaha* :</label>
+                            <div class="input-group">
+                                <input type="text" required class="form-control" name="jenis_usaha"  value="{{.data.surat.JenisUsaha}}">
+                            </div>
+                        </div>
+                     
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

@@ -1,0 +1,85 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/admin/dokumen/">Dokument</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Dokument</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/admin/dokumen/update" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="nama-file">Nama </label>
+                            <input type="text" name="nama" value="{{.data.file.FileName}}"
+                                class="form-control" id="nama-file" placeholder="Nama File">
+                        </div>
+                        <div class="form-group">
+                            <label for="Keterangan-file">Keterangan </label>
+                            <input type="text" name="deskripsi_file" value="{{.data.file.Deskripsi}}"
+                                class="form-control" id="Keterangan-file" placeholder="Ketarangan File">
+                        </div>
+                        <div class="form-group">
+                            <label>Arsip</label>
+                            <select class="form-control select2" style="width: 100%;" name="arsip_id">
+                                <option selected="selected" value="{{.data.file.ArsipID}}">{{.data.file.ArsipName}}
+                                </option>
+                                <option value="0">-</option>
+                                {{range .data.arsip}}
+                                <option value="{{.ID}}">{{.Nama}}</option>
+                                {{end}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" disabled="disabled" name="file-dokumen" class="custom-file-input"
+                                        id="exampleInputFile">
+                                    <label class="custom-file-label"
+                                        for="exampleInputFile">{{.data.file.FileName}}</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="file_id" value="{{.data.file.ID}}">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}
